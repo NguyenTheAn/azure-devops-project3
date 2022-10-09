@@ -77,7 +77,7 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'plan'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
           environmentServiceNameAzureRM: '$(azureServiceConnectionId)'
 
     
