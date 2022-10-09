@@ -72,14 +72,6 @@ stages:
     #  inputs:
     #   secureFile: 
 
-    # - task: TerraformTaskV3@3
-    #   displayName: Terraform plan
-    #   inputs:
-    #     provider: 'azurerm'
-    #     command: 'plan'
-    #     workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-    #     environmentServiceNameAzureRM: '$(azureServiceConnectionId)'
-
     
     # Run Terraform Apply
     # ToDo: Change the workingDirectory path, as applicable to you
