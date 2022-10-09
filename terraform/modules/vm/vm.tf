@@ -17,7 +17,6 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name = var.resource_group
   size                = "Standard_DS2_v2"
   admin_username      = "ubuntu"
-  source_image_id     = agent-image-20221009155223
   network_interface_ids = [azurerm_network_interface.main.id]
   admin_ssh_key {
     username   = "ubuntu"
