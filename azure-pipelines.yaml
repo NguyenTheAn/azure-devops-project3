@@ -186,8 +186,6 @@ stages:
   # Deploy FakeRestAPI Web App
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
-    pool:
-      vmImage: 'Ubuntu-18.04'      
     environment: $(environmentName)   # ToDo
     strategy:
       runOnce:
@@ -218,7 +216,6 @@ stages:
     environment:
       name:  $(environmentName)       # ToDo: Change/provide a name
       resourceType: VirtualMachine
-      tags: selenium
     strategy:
       runOnce:
         deploy:
