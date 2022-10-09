@@ -10,7 +10,7 @@ def login (user, password):
     # options = ChromeOptions()
     # options.add_argument("--headless") 
     # driver = webdriver.Chrome(options=options)
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(executable_path="/home/ligirk/Downloads/chromedriver_linux64/chromedriver")
     print ('Browser started successfully. Navigating to the demo page to login.')
     driver.get('https://www.saucedemo.com/')
 
