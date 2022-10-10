@@ -244,7 +244,7 @@ stages:
                 chromium-browser -version
                 chromedriver --version
 
-                unzip -o $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-uitests.zip -d .
+                unzip -o $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip -d .
                 
                 # ToDo: Write commands for deploying the UI Test Suite (published zip artifact) to the linux VM and execute the Test Suite
                 # ToDo: Direct the output of the Selenium Test Suite to a log file
