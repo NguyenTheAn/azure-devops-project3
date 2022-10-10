@@ -248,8 +248,8 @@ stages:
 - stage: IntegrationTests
   displayName: Integration Tests
   jobs:
-  - job: JmeterTests
-    displayName: Jmeter Tests
+  - job: PostmanTests
+    displayName: Postman Tests
     steps: 
     - task: CmdLine@2
       displayName: Run Regression Tests
