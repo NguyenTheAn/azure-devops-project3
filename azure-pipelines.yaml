@@ -96,16 +96,16 @@ stages:
 #--------------------------------------------#    
     # Postman - Install Newman    
     # ToDo: Update the command and verify the working directory
-    # - task: NodeTool@0
-    #     displayName: Install Node v16.X
-    #     inputs:
-    #       versionSpec: '16.x'
-    #       checkLatest: true
-    # - task: CmdLine@2
-    #   displayName: Install Newman
-    #   inputs:
-    #     script: 'npm install newman'          # ToDo: Write your commands to install newman
-    #     workingDirectory: $(System.DefaultWorkingDirectory)
+    - task: NodeTool@0
+        displayName: Install Node v16.X
+        inputs:
+          versionSpec: '16.x'
+          checkLatest: true
+    - task: CmdLine@2
+      displayName: Install Newman
+      inputs:
+        script: 'npm install newman'          # ToDo: Write your commands to install newman
+        workingDirectory: $(System.DefaultWorkingDirectory)
     # # Postman Data Validation Test Suite    
     # # ToDo: Verify the working directory and the newman scripts
     # - task: CmdLine@2
@@ -231,13 +231,20 @@ stages:
                 #! /bin/bash
                 
                 sudo apt-get upgrade -y
-                sudo apt-get install python3-pip -y
                 sudo apt-get install unzip -y
                 sudo apt-get install -y chromium-browser
-                pip3 install selenium
+                pip install selenium
                 
                 #  ToDo: Add chromedriver executable to path
-                export PATH=$PATH:/path/to/chromedriver     
+                wget https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip
+                unzip chromedriver_linux64.zip 
+                sudo chown root:root chromedriver
+                sudo chmod +x chromedriver
+                sudo mv chromedriver /usr/bin/chromedriver
+                chromium-browser -version
+                chromedriver --version
+
+                unzip -o $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-uitests.zip -d .
                 
                 # ToDo: Write commands for deploying the UI Test Suite (published zip artifact) to the linux VM and execute the Test Suite
                 # ToDo: Direct the output of the Selenium Test Suite to a log file
