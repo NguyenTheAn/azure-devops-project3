@@ -20,7 +20,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   network_interface_ids = [azurerm_network_interface.main.id]
   admin_ssh_key {
     username   = "ubuntu"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDem/vLgDKALTOkT8PI1+N3TGerxE7ArviZrnBAwGd/cgFTfacYt9ZUVvJQ5GZIZCMHe5YLjN+8Yy5iJLxm1Nbi3fezRYNLb/cGt6esqSdDJ7YIVTPEORZ07e4hXiDcjazrz+K6jLbEMEUu279YKk3SQwQZUchaw9sKdBFjaayoKAvT6ljPh6xOS81jtbSbJu+m6kkYfJFjcb6UbR/eiFFoBI690i+Gw8gGHxcqw1grPH9pG7Ci8WhJWrV1l/k0W3qZ/Gwt6W50zTYoQv3oAPH0H28Pqjhi++Cbk1KwATNpaYyQkao/064BkLCYvLBkdZbUOE9wP6vVg2BAacBsTymd annt45@fsoft.com.vn"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC//q+l3obww4eIYItZlIK0dVLSe6PMCa8heCPmvNAnhHvEpRYu8YksnDNxaqQvbKRZdpmR2kv4MxtjYbod2AciAeXrubtCD1N6mqicGkWZ12qe1FBoNmJEXPG4cycmkTBpNi99FKHX718cdmspJ7T2Ued3cChNHE/RoVRQyv6LyObfnWw9xutckfahStJEiOKaUfDp87V/5XjEAPmon9wKyiMlgVKEg5ziZRRwgfYH11lgGd6VBTZ7T0E3H3zgNt3dJgMnRlBmV47Ob3YhNXdGEho9/rcC0dSJ7JMABM4DNsdDbyMdZT/aNZcvI/U8eVdUx8lbXfnNNIdFaKidlmqqeV1AmaOjWbnIy5OErLYczxJgfAfI9lXVtKmE/2T71xJsY3XhtJghBkWS8Jg6BO5Re6AhNeoIlA1qAfzf7zj9aafRgtx8AYY9lBIh0nhEJLF8VaJgjYsy173G69vGNjQfdfUF0oyHqSA7k56tRVIbEA2PohpCdunUwQlBmcVt9A8= ann52999@gmail.com"
   }
   os_disk {
     caching           = "ReadWrite"

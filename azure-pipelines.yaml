@@ -62,8 +62,8 @@ stages:
     # ToDo: Change the inputs value below
     # - task: InstallSSHKey@0
     #   inputs:
-    #     knownHostsEntry: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDem/vLgDKALTOkT8PI1+N3TGerxE7ArviZrnBAwGd/cgFTfacYt9ZUVvJQ5GZIZCMHe5YLjN+8Yy5iJLxm1Nbi3fezRYNLb/cGt6esqSdDJ7YIVTPEORZ07e4hXiDcjazrz+K6jLbEMEUu279YKk3SQwQZUchaw9sKdBFjaayoKAvT6ljPh6xOS81jtbSbJu+m6kkYfJFjcb6UbR/eiFFoBI690i+Gw8gGHxcqw1grPH9pG7Ci8WhJWrV1l/k0W3qZ/Gwt6W50zTYoQv3oAPH0H28Pqjhi++Cbk1KwATNpaYyQkao/064BkLCYvLBkdZbUOE9wP6vVg2BAacBsTymd annt45@fsoft.com.vn' # variable value
-    #     sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDem/vLgDKALTOkT8PI1+N3TGerxE7ArviZrnBAwGd/cgFTfacYt9ZUVvJQ5GZIZCMHe5YLjN+8Yy5iJLxm1Nbi3fezRYNLb/cGt6esqSdDJ7YIVTPEORZ07e4hXiDcjazrz+K6jLbEMEUu279YKk3SQwQZUchaw9sKdBFjaayoKAvT6ljPh6xOS81jtbSbJu+m6kkYfJFjcb6UbR/eiFFoBI690i+Gw8gGHxcqw1grPH9pG7Ci8WhJWrV1l/k0W3qZ/Gwt6W50zTYoQv3oAPH0H28Pqjhi++Cbk1KwATNpaYyQkao/064BkLCYvLBkdZbUOE9wP6vVg2BAacBsTymd annt45@fsoft.com.vn'            # variable value
+    #     knownHostsEntry: '' # variable value
+    #     sshPublicKey: ''            # variable value
     #     sshKeySecureFile: 'id_rsa' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
     
     # - task: DownloadSecureFile@1
@@ -195,7 +195,7 @@ stages:
             displayName: 'Deploy Azure Web App'
             inputs:
               azureSubscription: $(azureServiceConnectionId)     # ToDo
-              appName: myApplication-AppService               # ToDo
+              appName: ligirkappservice               # ToDo
               appType: webApp
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip    # ToDo: Use the published zip artifact. 
           #--------------------------------------------#    
