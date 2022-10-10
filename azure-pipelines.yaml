@@ -332,8 +332,7 @@ stages:
       displayName: Ui Tests
       inputs:
         script: |
-          unzip -o $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip -d .
-          python uitests.py > ui-logs.log
+          python automatedtesting/selenium/test.py > ui-logs.log
         workingDirectory: $(System.DefaultWorkingDirectory)
     - task: PublishPipelineArtifact@1
       displayName: Publish selenium logs
