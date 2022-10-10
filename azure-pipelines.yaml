@@ -197,6 +197,7 @@ stages:
               azureSubscription: $(azureServiceConnectionId)     # ToDo
               appName: ligirkappservice               # ToDo
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip    # ToDo: Use the published zip artifact. 
+              DeploymentType: runFromZip
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           # ToDo: Update the script below to install jmeter, unzip the jmeter test suite published zip artifact, and run the PerformanceTestSuite.  
