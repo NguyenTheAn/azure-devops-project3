@@ -244,9 +244,15 @@ stages:
                 chromedriver --version
 
                 unzip -o $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip -d .
-                
-                # ToDo: Write commands for deploying the UI Test Suite (published zip artifact) to the linux VM and execute the Test Suite
-                # ToDo: Direct the output of the Selenium Test Suite to a log file
+
+                sudo apt-get install openjdk-11-jre-headless -y
+                java -version
+                wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.tgz -O jmeter.tgz
+                tar xzvf jmeter.tgz
+                apache-jmeter-5.4/bin/jmeter --version
+                # create log directory
+                mkdir -p log/jmeter
+                pwd
                 
 - stage: IntegrationTests
   displayName: Integration Tests
@@ -268,7 +274,7 @@ stages:
       continueOnError: true
     - task: CmdLine@2
       inputs:
-        script: 'ls -la ./Results/'
+        script: 'ls -la Results/'
         workingDirectory: '$(System.DefaultWorkingDirectory)'
     - task: PublishTestResults@2
       displayName: Publish Test Reports
