@@ -245,23 +245,11 @@ stages:
                 chromium-browser -version
                 chromedriver --version
 
-                unzip -o $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip -d .
-
-                # sudo apt-get install openjdk-11-jre-headless -y
-                # java -version
-                # cd '$(System.DefaultWorkingDirectory)'
-                # wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.tgz -O jmeter.tgz
-                # tar xzvf jmeter.tgz
-                # apache-jmeter-5.4/bin/jmeter --version
-                # # create log directory
-                # mkdir -p log/jmeter
-                # pwd
-                
 - stage: IntegrationTests
   displayName: Integration Tests
   jobs:
-  - job: PostmanTests
-    displayName: Postman Tests
+  - job: JmeterTests
+    displayName: Jmeter Tests
     steps: 
     - task: CmdLine@2
       displayName: Run Regression Tests
@@ -337,3 +325,18 @@ stages:
       inputs:
         targetPath: '$(System.DefaultWorkingDirectory)/log/jmeter'
         artifactName: 'drop-jmeter-logs'
+  - job: UiTests
+    displayName: Ui Tests
+    steps: 
+    - task: CmdLine@2
+      displayName: Ui Tests
+      inputs:
+        script: |
+          unzip -o $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip -d .
+          python uitests.py > ui-logs.log
+        workingDirectory: $(System.DefaultWorkingDirectory)
+    - task: PublishPipelineArtifact@1
+      displayName: Publish selenium logs
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/ui-logs.log'
+        artifactName: 'drop-selenium-logs'
