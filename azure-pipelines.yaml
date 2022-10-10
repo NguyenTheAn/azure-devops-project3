@@ -197,7 +197,7 @@ stages:
               azureSubscription: $(azureServiceConnectionId)     # ToDo
               appName: ligirkappservice               # ToDo
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip    # ToDo: Use the published zip artifact. 
-              DeploymentType: runFromZip
+              DeploymentType: runFromPackage
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           # ToDo: Update the script below to install jmeter, unzip the jmeter test suite published zip artifact, and run the PerformanceTestSuite.  
@@ -283,3 +283,12 @@ stages:
       inputs:
         testResultsFormat: 'JUnit'
         testResultsFiles: '$(System.DefaultWorkingDirectory)/Results/*.xml'
+  - job: JmeterTests
+    displayName: Postman Tests
+    steps: 
+    - bash: |
+        apache-jmeter-5.4/bin/jmeter -n -t automatedtesting/jmeter/StressTestSuite.jmx \
+                                       -l log/jmeter/stress-test-result.csv \
+                                       -e -f -o log/jmeter/stress-test-html-report \
+                                       -j log/jmeter/jmeter-stress-test.log
+      displayName: JMeter stress test
