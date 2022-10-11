@@ -21,7 +21,7 @@ variables:
   # Environment name
   environmentName: 'ligirk'
 
-# stages:
+stages:
 # #--------------------------------------------#  
 # # BUILD STAGE
 # #--------------------------------------------#    
