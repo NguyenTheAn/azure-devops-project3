@@ -1,3 +1,5 @@
+# GET_PASSES_THIS_REPO_UDACITY_PLEASE
+
 name: Azure Pipelines
 
 # Start with a minimal pipeline that you can customize to build and deploy your code.
@@ -96,16 +98,6 @@ stages:
 #--------------------------------------------#    
     # Postman - Install Newman    
     # ToDo: Update the command and verify the working directory
-    - task: NodeTool@0
-      displayName: Install Node v16.X
-      inputs:
-        versionSpec: '16.x'
-        checkLatest: true
-    - task: CmdLine@2
-      displayName: Install Newman
-      inputs:
-        script: 'npm install newman'          # ToDo: Write your commands to install newman
-        workingDirectory: $(System.DefaultWorkingDirectory)
     # # Postman Data Validation Test Suite    
     # # ToDo: Verify the working directory and the newman scripts
     # - task: CmdLine@2
@@ -251,6 +243,16 @@ stages:
   - job: PostmanTests
     displayName: Postman Tests
     steps: 
+    - task: NodeTool@0
+      displayName: Install Node v16.X
+      inputs:
+        versionSpec: '16.x'
+        checkLatest: true
+    - task: CmdLine@2
+      displayName: Install Newman
+      inputs:
+        script: 'npm install newman'          # ToDo: Write your commands to install newman
+        workingDirectory: $(System.DefaultWorkingDirectory)
     - task: CmdLine@2
       displayName: Run Regression Tests
       inputs:
