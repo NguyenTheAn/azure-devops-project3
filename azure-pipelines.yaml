@@ -337,7 +337,9 @@ stages:
           mv chromedriver ./automatedtesting/selenium/
           chromium-browser -version
           ./automatedtesting/selenium/chromedriver --version
-          python automatedtesting/selenium/test.py > ui-logs.log
+          python automatedtesting/selenium/test.py > ui.log
+          sudo mkdir /var/logs
+          sudo mv ui.log /var/logs
         workingDirectory: $(System.DefaultWorkingDirectory)
     - task: PublishPipelineArtifact@1
       displayName: Publish selenium logs
