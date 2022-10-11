@@ -336,7 +336,7 @@ stages:
           sudo chmod +x chromedriver
           mv chromedriver ./automatedtesting/selenium/
           chromium-browser -version
-          chromedriver --version
+          ./automatedtesting/selenium/chromedriver --version
           python automatedtesting/selenium/test.py > ui-logs.log
         workingDirectory: $(System.DefaultWorkingDirectory)
     - task: PublishPipelineArtifact@1
