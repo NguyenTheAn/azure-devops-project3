@@ -274,10 +274,10 @@ stages:
         testResultsFormat: 'JUnit'
         testResultsFiles: '$(System.DefaultWorkingDirectory)/Results/*.xml'
   - job: JmeterTests
-    displayName: Postman Tests
+    displayName: Jmeter Tests
     steps: 
     - task: CmdLine@2
-      displayName: Install Newman
+      displayName: Install Jmeter
       inputs:
         script: |
           sudo apt-get install openjdk-11-jre-headless -y
