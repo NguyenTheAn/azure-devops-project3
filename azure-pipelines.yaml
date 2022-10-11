@@ -227,12 +227,12 @@ stages:
                 pip install selenium
                 
                 #  ToDo: Add chromedriver executable to path
-                wget https://chromedriver.storage.googleapis.com/106.0.5249.61/chromedriver_linux64.zip
-                unzip chromedriver_linux64.zip 
-                sudo chmod +x chromedriver
-                mv chromedriver $(System.DefaultWorkingDirectory)/automatedtesting/selenium/
-                chromium-browser -version
-                chromedriver --version
+                # wget https://chromedriver.storage.googleapis.com/106.0.5249.61/chromedriver_linux64.zip
+                # unzip chromedriver_linux64.zip 
+                # sudo chmod +x chromedriver
+                # mv chromedriver $(System.DefaultWorkingDirectory)/automatedtesting/selenium/
+                # chromium-browser -version
+                # chromedriver --version
 
 - stage: IntegrationTests
   displayName: Integration Tests
@@ -331,6 +331,10 @@ stages:
       displayName: Ui Tests
       inputs:
         script: |
+          wget https://chromedriver.storage.googleapis.com/106.0.5249.61/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip 
+          sudo chmod +x chromedriver
+          mv chromedriver ./automatedtesting/selenium/
           python automatedtesting/selenium/test.py > ui-logs.log
         workingDirectory: $(System.DefaultWorkingDirectory)
     - task: PublishPipelineArtifact@1
