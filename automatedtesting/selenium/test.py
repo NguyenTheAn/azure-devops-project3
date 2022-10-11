@@ -14,8 +14,8 @@ def login(user, password):
     options = ChromeOptions()
     options.add_argument('--no-sandbox')
     options.add_argument("--headless") 
-    options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(options=options)
+    options.add_argument("--remote-debugging-port=9222")
+    driver = webdriver.Chrome(options=options, executable_path="automatedtesting/selenium/chromedriver")
     print(timestamp() + 'Browser started successfully. Navigating to the demo page to login.')
     driver.get('https://www.saucedemo.com/')
     # login
