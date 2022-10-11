@@ -227,11 +227,10 @@ stages:
                 pip install selenium
                 
                 #  ToDo: Add chromedriver executable to path
-                wget https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip
+                wget https://chromedriver.storage.googleapis.com/106.0.5249.61/chromedriver_linux64.zip
                 unzip chromedriver_linux64.zip 
-                sudo chown root:root chromedriver
                 sudo chmod +x chromedriver
-                sudo mv chromedriver /usr/bin/chromedriver
+                mv chromedriver $(System.DefaultWorkingDirectory)/automatedtesting/selenium/
                 chromium-browser -version
                 chromedriver --version
 
