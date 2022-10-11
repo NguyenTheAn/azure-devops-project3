@@ -339,7 +339,7 @@ stages:
           ./automatedtesting/selenium/chromedriver --version
           python automatedtesting/selenium/test.py > ui.log
           sudo mkdir /var/logs
-          sudo mv ui.log /var/logs
+          sudo cp ui.log /var/logs/
         workingDirectory: $(System.DefaultWorkingDirectory)
     - task: PublishPipelineArtifact@1
       displayName: Publish selenium logs
